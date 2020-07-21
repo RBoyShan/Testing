@@ -33,7 +33,7 @@ html *, html *:before, html *:after {
   padding: 54px;
 }
 
-.page-section--ligth-background {
+.page-section--light-background {
   background-image: url("../img/src_assets_right-bottom-corner.png"), url("../img/src_assets_left-bottom-corner.png"), url("../img/src_assets_right-top-corner.png"), url("../img/src_assets_left-top-corner.png"), url("../img/light-background.png");
   background-position: calc(100% - 50px) calc(100% - 50px), 50px calc(100% - 50px), calc(100% - 50px) 50px, 50px 50px, center, center;
   background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, repeat;
@@ -44,6 +44,12 @@ html *, html *:before, html *:after {
 }
 
 .collections .collections__container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.collections .collections__inner-container {
+  margin: -8px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -53,9 +59,8 @@ html *, html *:before, html *:after {
   outline: 1px solid #E9C886;
   outline-offset: -20px;
   position: relative;
-  max-width: 33.4%;
-  min-width: 350px;
-  width: 100%;
+  width: calc(50% - 16px);
+  min-width: 450px;
   padding: 40px 0;
   margin: 8px;
   display: flex;
@@ -64,7 +69,7 @@ html *, html *:before, html *:after {
   align-items: center;
 }
 
-.collections .collections__item-hidden {
+.collections .collections__item-overlay {
   position: absolute;
   top: 0;
   left: 0;
@@ -76,8 +81,8 @@ html *, html *:before, html *:after {
 }
 
 .collections .collections__item-inner-box {
-  background-image: url("../img/src_assets_banner-back.png");
   position: relative;
+  background-image: url("../img/src_assets_banner-back.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-clip: padding-box;
@@ -96,12 +101,11 @@ html *, html *:before, html *:after {
 }
 
 .collections .collections__item-title {
-  word-wrap: break-all;
+  word-wrap: break-word;
   display: inline-block;
   position: relative;
   max-width: 100%;
-  font-weight: 100;
-  font-size: 26px;
+  font-size: 28px;
   font-family: 'Nanum Myeongjo', serif;
   font-weight: 800;
   text-align: center;
@@ -109,13 +113,12 @@ html *, html *:before, html *:after {
   color: #FDFDFD;
 }
 
-.interaction-container {
-  margin-top: 13px;
-  position: relative;
+.collections .collections__item-button {
+  margin-top: 12px;
 }
 
 .button {
-  word-wrap: break-all;
+  word-wrap: break-word;
   text-decoration: none;
   text-align: center;
   color: #FDFDFD;
@@ -132,7 +135,6 @@ html *, html *:before, html *:after {
 }
 
 .about {
-  padding: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -144,7 +146,7 @@ html *, html *:before, html *:after {
   max-width: 760px;
   width: 100%;
   background-color: white;
-  padding: 110px 0;
+  padding: 110px 115px;
 }
 
 .about .about__content {
@@ -167,16 +169,19 @@ html *, html *:before, html *:after {
   font-size: 23px;
   font-weight: 100;
   word-spacing: 4px;
-  margin: 5px 150px;
+  margin: 5px 40px;
 }
 
 .about .about__content-text {
   font-family: 'Roboto', sans-serif;
-  margin: 20px 210px;
+  margin: 20px 95px;
   line-height: 1.5;
 }
 
 .about .about__button {
+  margin-top: 13px;
+  margin-left: 13px;
+  margin-right: 13px;
   font-size: 18px;
   word-spacing: 3px;
 }
@@ -187,16 +192,32 @@ html *, html *:before, html *:after {
 }
 
 .about .about__content-image-left {
-  transform: translate(calc(-32% + 50px), -50%);
+  left: 0;
+  transform: translate(-194px, -50%);
 }
 
 .about .about__content-image-right {
-  transform: translate(calc(100% - 22% + 50px), -50%);
+  transform: translate(194px, -50%);
+  right: 0;
 }
 
-.image {
+.image-wrapper {
+  max-width: 308px;
   width: 100%;
   height: auto;
+}
+
+.image-wrapper .image-aspect-ratio {
+  position: relative;
+  padding-top: 75.5%;
+}
+
+.image-wrapper .image {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 @media only screen and (max-width: 767px) {
@@ -207,15 +228,18 @@ html *, html *:before, html *:after {
     outline-offset: -10px;
     padding: 17px 13px;
   }
-  .page-section--ligth-background {
+  .page-section--light-background {
     background-size: 0, 0, 0, 0, auto;
   }
   .page-section--indent {
     margin: 0;
   }
+  .collections .collections__inner-container {
+    margin: 0;
+  }
   .collections .collections__item {
     outline-offset: -11px;
-    max-width: 100%;
+    width: 100%;
     min-width: 0;
     padding-top: 10px;
     padding-bottom: 10px;
@@ -226,9 +250,11 @@ html *, html *:before, html *:after {
     z-index: 1;
     visibility: hidden;
     max-width: 100%;
+    padding-top: 25px;
+    padding-bottom: 25px;
   }
   .collections .collections__item-title,
-  .collections .collections__item-hidden {
+  .collections .collections__item-overlay {
     visibility: visible;
   }
   .collections .collections__item-title {
@@ -239,37 +265,36 @@ html *, html *:before, html *:after {
   }
   .about {
     padding: 0;
-  }
-  .about .about__underlay {
-    background-color: transparent;
-    max-width: 100%;
-    height: 100%;
-    padding: 10px 30px 55px;
+    min-height: auto;
   }
   .about .about__content-title {
     font-size: 45px;
     line-height: 1.2;
     margin: 0;
-    padding: 5px 0;
+    padding: 2px 0;
   }
   .about .about__content-subtitle {
     font-size: 21px;
     margin-left: 5px;
     margin-right: 5px;
-    padding-bottom: 10px;
+    padding-bottom: 15px;
   }
   .about .about__content-text {
-    font-size: 16px;
+    font-size: 17px;
     margin: 0 10px;
-    padding-bottom: 10px;
-  }
-  .about .about__button {
-    margin-bottom: 95px;
+    padding-bottom: 15px;
+    line-height: 1.55;
+    word-spacing: 1px;
   }
 }
 
 @media only screen and (max-width: 1350px) {
-  .image {
+  .about .about__underlay {
+    background-color: transparent;
+    width: 100%;
+    padding: 35px 30px 45px;
+  }
+  .about .about__image {
     display: none;
   }
 }
